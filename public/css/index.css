@@ -1,0 +1,13 @@
+body {
+    width: 100%;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+.centrar {
+    margin: 0 auto;
+    text-align: center;
+}

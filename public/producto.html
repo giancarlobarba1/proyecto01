@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Producto</title>
+</head>
+<body>
+    <div class="producto">
+        <h1>Información del Producto</h1>
+        <div>        <strong>Nombre:</strong> {{ nombre }}</div>
+        <div>        <strong>SKU:</strong> {{ sku }}</div>
+        <div>        <strong>Categoría:</strong> {{ categoria }}</div>
+        <div>        <strong>Descripción:</strong> {{ descripcion }}</div>
+        <div>        <strong>Venta:</strong> {{ precio_venta }}</div>
+        <div>        <strong>Renta:</strong> {{ precio_renta }}</div>
+        <div>        <strong>Cantidad disponible:</strong> {{ cantidad }}</div>
+    </div>
+
+
+    
+
+    <div class="bot">
+        <div class="titulo" id="titulo"></div>
+        <div id="productosRelacionados" class="relacionados" style="margin: 0 auto;">
+    </div>
+
+    </div>
+
+    <script>
+        const productosRelacionados = {{ productosRelacionados }}
+        function mostrarProductosRelacionados() {
+            const titulo = document.getElementById('titulo')
+            const container = document.getElementById('productosRelacionados')
+            const h2 = document.createElement('h2')
+            h2.innerHTML = "Productos Relacionados"
+            titulo.appendChild(h2)
+            productosRelacionados.forEach(producto => {
+                const elemento = document.createElement('div');
+                elemento.innerHTML = `
+                    
+                        <p><strong>Nombre:</strong> ${producto.nombre_producto}</p>
+                        <p><strong>Descripción:</strong> ${producto.descripcion}</p>
+                        <p><strong>Precio:</strong> ${producto.precio_venta}</p>
+                    
+                `;
+                container.appendChild(elemento)
+            });
+        }
+
+        // Llamar a la función para mostrar los productos relacionados
+        mostrarProductosRelacionados();
+    </script>
+
+</body>
+</html>
+
+<style>
+
+body {
+    width: 100%;
+    min-height: 90vh;
+    overflow-x: hidden;
+
+}
+
+    .bot {
+        position: absolute;
+        bottom: 0;
+        overflow: hidden;
+        width: 100%;
+    }
+    .titulo {
+        text-align: center; 
+        padding: 2%;
+    }
+    .relacionados {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        overflow-x: scroll;
+        width: 75%;
+        margin: 0 auto;
+
+    }
+    .relacionados div {
+        width: 20rem;
+
+    }
+    .producto {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: 3%;
+        padding: 3%;
+        border: 1px solid #123;
+    }
+</style>
